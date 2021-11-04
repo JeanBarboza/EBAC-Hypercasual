@@ -16,6 +16,7 @@ public class PlayerController : Singleton<PlayerController>
     public string tagToCheckEndLine = "EndLine";
 
     public GameObject endScreen;
+    public bool invencible = true;
 
     //Privates
     private bool _canRun;
@@ -44,7 +45,7 @@ public class PlayerController : Singleton<PlayerController>
     {
         if(collision.transform.tag == tagToCheckEnemy)
         {
-            EndGame();
+            if(!invencible) EndGame();
         }
     }
 
@@ -52,7 +53,7 @@ public class PlayerController : Singleton<PlayerController>
     {
         if(other.transform.tag == tagToCheckEndLine)
         {
-            EndGame();
+            if (!invencible) EndGame();
         }
     }
 
@@ -68,10 +69,16 @@ public class PlayerController : Singleton<PlayerController>
         _canRun = true;
     }
 
-    #region PowerUpSpeedUp
+    #region POWER_UPS
     public void PowerUpSpeedUp(float f)
     {
         _currentSpeed = f;
+    }
+
+    public void SetInvencilbe(bool b = true)
+    {
+
+        invencible = b;
     }
 
     public void ResetSpeed()

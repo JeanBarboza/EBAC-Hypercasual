@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 940187d0b1d119b45bd5a78b928b4e8e, type: 2}
+  - {fileID: 2100000, guid: a741b7772d1c45c4790a557e8bc7e42c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -105,9 +105,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8851534874396187092}
   - component: {fileID: 8851534874396187051}
-  - component: {fileID: 8179085242513448368}
+  - component: {fileID: -8468632432772762797}
   m_Layer: 0
-  m_Name: PFB_PowerUp_SpeedUp
+  m_Name: PFB_PowerUp_Invencible
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,7 +141,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8179085242513448368
+--- !u!114 &-8468632432772762797
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,13 +150,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8851534874396187049}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56c79cce64a301a44a9f7c31165076f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 507e470f465154e469ff36e90ba965dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   compareTag: Player
   Goticles: {fileID: 0}
   timeToHide: 2
-  graphicItem: {fileID: 8219902753725088329}
+  graphicItem: {fileID: 8851534874396187049}
   audioSource: {fileID: 0}
   duration: 3
-  amountToSpeed: 15
