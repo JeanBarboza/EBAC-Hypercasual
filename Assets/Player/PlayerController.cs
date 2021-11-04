@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Barboza.Core.Singleton;
+using DG.Tweening;
 
 public class PlayerController : Singleton<PlayerController>
 {
@@ -9,7 +10,6 @@ public class PlayerController : Singleton<PlayerController>
     [Header("Lerp")]
     public Transform target;
     public float lerpSpeed = 1f;
-
     public float speed = 1f;
 
     public string tagToCheckEnemy = "Enemy";
@@ -22,9 +22,11 @@ public class PlayerController : Singleton<PlayerController>
     private bool _canRun;
     private Vector3 _pos;
     private float _currentSpeed;
+    private Vector3 _startPosition;
 
     private void Start()
     {
+        _startPosition = transform.position;
         ResetSpeed();
     }
 
@@ -85,5 +87,17 @@ public class PlayerController : Singleton<PlayerController>
     {
         _currentSpeed = speed;
     }
+
+    public void ChangeHeight(float amount, float duration, float animationDuration, Ease ease)
+    {
+        Invoke(nameof(Resetheight), duration);
+        transform.DOMoveY(_startPosition.y + amount,animationDuration).SetEase(ease);
+    }
+    public void Resetheight()
+    {
+        transform.DOMoveY(_startPosition.y, 1f);
+    }
+
+
     #endregion
 }
