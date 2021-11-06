@@ -18,6 +18,9 @@ public class PlayerController : Singleton<PlayerController>
     public GameObject endScreen;
     public bool invencible = true;
 
+    [Header("Collector")]
+    public GameObject coinCollector;
+
     //Privates
     private bool _canRun;
     private Vector3 _pos;
@@ -96,6 +99,11 @@ public class PlayerController : Singleton<PlayerController>
     public void Resetheight()
     {
         transform.DOMoveY(_startPosition.y, 1f);
+    }
+
+    public void ChangeCoinCollectorSize(float amount)
+    {
+        coinCollector.transform.localScale = Vector3.one * amount;
     }
 
 
