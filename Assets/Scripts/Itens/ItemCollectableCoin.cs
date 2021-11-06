@@ -12,7 +12,7 @@ public class ItemCollectableCoin : ItemCollectableBase
     protected override void OnCollect()
     {
         base.OnCollect();
-        //ItemManager.Instance.AddCoins();
+        ItemManager.Instance.AddCoins();
         colliderCoins.enabled = false;
         collect = true;
     }
