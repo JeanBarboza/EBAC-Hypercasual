@@ -1375,8 +1375,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1014562014}
   checkCoin: Coin
-  coins: {fileID: 11400000, guid: 1322db3b0e1d52249b7cfcab0261b652, type: 2}
-  uiPoints: {fileID: 1675423183}
+  coins: {fileID: 11400000, guid: 8c768495f2cecac4b8b82089f0b1ad43, type: 2}
+  uiPoints: {fileID: 1922843068}
 --- !u!1001 &564976532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4151,7 +4151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0f8886593604c40afa7c9a13340277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soInt: {fileID: 11400000, guid: 1322db3b0e1d52249b7cfcab0261b652, type: 2}
+  soInt: {fileID: 11400000, guid: 8c768495f2cecac4b8b82089f0b1ad43, type: 2}
   uiTextValue: {fileID: 1922843068}
 --- !u!114 &1922843068
 MonoBehaviour:
