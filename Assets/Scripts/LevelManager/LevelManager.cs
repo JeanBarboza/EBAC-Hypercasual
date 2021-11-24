@@ -15,15 +15,15 @@ public class LevelManager : MonoBehaviour
 
     private List<LevelPieceBase> _spawnedPieces = new List<LevelPieceBase>();
     private LevelPieceBasedSetup _currSetup;
-
+  
 
     private void Awake()
     {
         SpawnNextLevel();
-        //CreateLevelPieces();  
+        //CreateLevelPieces();
     }
 
-    private void SpawnNextLevel()
+    public void SpawnNextLevel()
     {
         if (_currentLevel != null)
         {
@@ -43,6 +43,13 @@ public class LevelManager : MonoBehaviour
     private void ResetLevelIndex()
     {
         _index = 0;
+    }
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SpawnNextLevel();
+        }
     }
 
     #region
@@ -76,7 +83,7 @@ public class LevelManager : MonoBehaviour
             CreateLevelPiece(_currSetup.levelPiecesEnd);
         }
 
-        ColorManager.Instance.ChangeColorByType(_currSetup.artType);
+        //ColorManager.Instance.ChangeColorByType(_currSetup.artType);
     }
 
 
@@ -98,7 +105,7 @@ public class LevelManager : MonoBehaviour
 
         foreach(var p in spawnedPiece.GetComponentsInChildren<ArtPiece>())
         {
-            //p.ChangePiece(ArtManager.Instance.GetSetupByType(_currSetup.artType).gameObject);
+            p.ChangePiece(ArtManager.Instance.GetSetupByType(_currSetup.artType).gameObject);
         }
 
         _spawnedPieces.Add(spawnedPiece);
@@ -115,11 +122,4 @@ public class LevelManager : MonoBehaviour
     }
     #endregion
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SpawnNextLevel();
-        }
-    }
 }
