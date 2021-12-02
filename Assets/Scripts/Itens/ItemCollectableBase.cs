@@ -10,7 +10,8 @@ public class ItemCollectableBase : MonoBehaviour
     public GameObject graphicItem;
 
     [Header("Sounds")]
-    public AudioSource audioSource;
+    //public AudioSource audioSource;
+    public AudioClip collectSound;
 
     private void Awake()
     {
@@ -34,6 +35,7 @@ public class ItemCollectableBase : MonoBehaviour
     {
         HideItens();
         OnCollect();
+
     }
 
     private void HideObjects() 
@@ -44,6 +46,8 @@ public class ItemCollectableBase : MonoBehaviour
     protected virtual void OnCollect()
     {
         if (Goticles != null) Goticles.Play();
-        if (audioSource != null) audioSource.Play();
+        //if (audioSource != null) audioSource.Play();
+        if (collectSound)
+            AudioSource.PlayClipAtPoint(collectSound, transform.position);
     }
 }

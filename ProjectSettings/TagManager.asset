@@ -8,6 +8,7 @@ TagManager:
   - EndLine
   - CoinCollector
   - Coin
+  - Border
   layers:
   - Default
   - TransparentFX

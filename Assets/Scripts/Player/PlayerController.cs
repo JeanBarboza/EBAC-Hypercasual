@@ -15,6 +15,7 @@ public class PlayerController : Singleton<PlayerController>
     public string tagToCheckEnemy = "Enemy";
     public string tagToCheckEndLine = "EndLine";
 
+
     public GameObject endScreen;
     public bool invencible = true;
 
@@ -23,6 +24,8 @@ public class PlayerController : Singleton<PlayerController>
 
     [Header("Animation")]
     public AnimatorManager animatorManager;
+
+    [SerializeField] private BounceHelper _bounceHelper;
 
     //Privates
     private bool _canRun;
@@ -35,8 +38,20 @@ public class PlayerController : Singleton<PlayerController>
     {
         _startPosition = transform.position;
         ResetSpeed();
+        BouncePlayer();
     }
 
+    public void Bounce()
+    {
+        if(_bounceHelper != null)
+            _bounceHelper.Bounce();
+    }
+
+    public void BouncePlayer()
+    {
+        if(_bounceHelper != null)
+            _bounceHelper.BouncePlayer();
+    }
 
     void Update()
     {
@@ -45,6 +60,7 @@ public class PlayerController : Singleton<PlayerController>
         _pos = target.position;
         _pos.y = transform.position.y;
         _pos.z = transform.position.z;
+
 
         transform.position = Vector3.Lerp(transform.position, _pos, lerpSpeed * Time.deltaTime);
         transform.Translate(transform.forward * _currentSpeed * Time.deltaTime);
@@ -58,9 +74,11 @@ public class PlayerController : Singleton<PlayerController>
             {
                 MoveBack(collision.transform);
                 EndGame(AnimatorManager.AnimationType.DEATH);
+                Bounce();
             }
             
         }
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -75,6 +93,13 @@ public class PlayerController : Singleton<PlayerController>
     {
         t.DOMoveZ(1f, 2f).SetRelative();
     }
+
+    private void DontPass(Transform r)
+    {
+        r.position = Vector3.zero;
+    }
+
+
 
     private void EndGame(AnimatorManager.AnimationType animationType = AnimatorManager.AnimationType.IDLE)
     {

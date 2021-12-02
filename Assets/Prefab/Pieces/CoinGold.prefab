@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4802539185917164}
   - component: {fileID: 33653846698673226}
   - component: {fileID: 23911864144709584}
-  - component: {fileID: 114092693196050024}
   - component: {fileID: 1463982784470370628}
   - component: {fileID: 82949050323633162}
   - component: {fileID: 135506371905761694}
@@ -85,23 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &114092693196050024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1516206009078322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1315172d7ad53634e952f7d8f3c02048, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollectibleType: 0
-  rotate: 1
-  rotationSpeed: 250
-  collectSound: {fileID: 0}
-  collectEffect: {fileID: 1702657300312902, guid: a45c51da10cf1a84abc6a99c06951e3f, type: 3}
 --- !u!114 &1463982784470370628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,11 +100,13 @@ MonoBehaviour:
   Goticles: {fileID: 0}
   timeToHide: 0.1
   graphicItem: {fileID: 1516206009078322}
-  audioSource: {fileID: 0}
+  collectSound: {fileID: 8300000, guid: 0f6a155a7ace245db9d018d60df2731b, type: 3}
   colliderCoins: {fileID: 135506371905761694}
   collect: 0
   lerp: 13
   minDistance: 1
+  rotate: 1
+  rotationSpeed: 250
 --- !u!82 &82949050323633162
 AudioSource:
   m_ObjectHideFlags: 0
@@ -133,15 +117,15 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 0f6a155a7ace245db9d018d60df2731b, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 130
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

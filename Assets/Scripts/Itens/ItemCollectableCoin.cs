@@ -9,12 +9,21 @@ public class ItemCollectableCoin : ItemCollectableBase
     public float lerp = 5f;
     public float minDistance = 1f;
 
+    public bool rotate;
+    public float rotationSpeed;
+
+    private void Start()
+    {
+        CoinsAnimatorManager.Instance.RegisterCoin(this);
+    }
+
     protected override void OnCollect()
     {
         base.OnCollect();
         ItemManager.Instance.AddCoins();
         colliderCoins.enabled = false;
         collect = true;
+        PlayerController.Instance.Bounce();
     }
 
     protected override void Collect()
@@ -34,5 +43,8 @@ public class ItemCollectableCoin : ItemCollectableBase
                 Destroy(gameObject);
             }
         }
+
+        if (rotate)
+            transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime, Space.World);
     }
 }
