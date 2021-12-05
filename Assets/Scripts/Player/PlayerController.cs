@@ -9,6 +9,7 @@ public class PlayerController : Singleton<PlayerController>
     //Publics
     [Header("Lerp")]
     public Transform target;
+    public GameObject spherePlayer;
     public float lerpSpeed = 1f;
     public float speed = 1f;
 
@@ -75,6 +76,7 @@ public class PlayerController : Singleton<PlayerController>
                 MoveBack(collision.transform);
                 EndGame(AnimatorManager.AnimationType.DEATH);
                 Bounce();
+                Destroy(gameObject, 3f);
             }
             
         }
@@ -106,6 +108,7 @@ public class PlayerController : Singleton<PlayerController>
         _canRun = false;
         endScreen.SetActive(true);
         animatorManager.Play(animationType);
+        spherePlayer.SetActive(false);
     }
 
 
