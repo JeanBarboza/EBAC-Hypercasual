@@ -10,6 +10,7 @@ public class PlayerController : Singleton<PlayerController>
     [Header("Lerp")]
     public Transform target;
     public GameObject spherePlayer;
+    public BoxCollider boxCollider;
     public float lerpSpeed = 1f;
     public float speed = 1f;
 
@@ -25,6 +26,10 @@ public class PlayerController : Singleton<PlayerController>
 
     [Header("Animation")]
     public AnimatorManager animatorManager;
+    
+    [Header("Animation")]
+    public ParticleSystem vfxDead;
+    public ParticleSystem vfxHeart;
 
     [SerializeField] private BounceHelper _bounceHelper;
 
@@ -76,7 +81,6 @@ public class PlayerController : Singleton<PlayerController>
                 MoveBack(collision.transform);
                 EndGame(AnimatorManager.AnimationType.DEATH);
                 Bounce();
-                Destroy(gameObject, 3f);
             }
             
         }
@@ -105,10 +109,14 @@ public class PlayerController : Singleton<PlayerController>
 
     private void EndGame(AnimatorManager.AnimationType animationType = AnimatorManager.AnimationType.IDLE)
     {
+        Destroy(gameObject, 4f);
         _canRun = false;
         endScreen.SetActive(true);
         animatorManager.Play(animationType);
         spherePlayer.SetActive(false);
+        boxCollider.enabled = false;
+        if (vfxDead != null) vfxDead.Play();
+        if(vfxHeart != null) vfxHeart.Play();
     }
 
 

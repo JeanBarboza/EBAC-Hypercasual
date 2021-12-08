@@ -45,7 +45,11 @@ public class ItemCollectableBase : MonoBehaviour
 
     protected virtual void OnCollect()
     {
-        if (Goticles != null) Goticles.Play();
+        if (Goticles != null)
+        {
+        Goticles.Play();
+        Goticles.transform.SetParent(null);
+        }
         //if (audioSource != null) audioSource.Play();
         if (collectSound)
             AudioSource.PlayClipAtPoint(collectSound, transform.position);
